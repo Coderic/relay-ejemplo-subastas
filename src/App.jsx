@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
-import { usePasarela } from './hooks/usePasarela';
+import { useRelay } from './hooks/useRelay';
 import './App.css';
 
 const SESSION_ID = localStorage.getItem('subastaSession') || (() => {
@@ -15,7 +15,7 @@ const ESTADOS_SUBASTA = {
 };
 
 function App() {
-  const { connected, enviarATodos, onMensaje } = usePasarela(SESSION_ID);
+  const { connected, enviarATodos, onMensaje } = useRelay(SESSION_ID);
   
   const [vista, setVista] = useState('lista'); // lista, subasta, admin
   const [subastas, setSubastas] = useState([]);
